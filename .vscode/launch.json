@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://microsoft.com
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Launch with Auto-Pause",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "C:\\Windows\\System32\\cmd.exe",
+            "args": [
+                "/c",
+                "\"${fileDirname}\\${fileBasenameNoExtension}.exe\" & pause"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+            "preLaunchTask": "C/C++: g++.exe build active file"
+        }
+    ]
+}
