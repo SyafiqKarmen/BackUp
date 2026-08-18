@@ -19,6 +19,7 @@
    10. Time Complexity
 */
 
+/* Wrong code. break my rule its too complicated and dumb
 #include <iostream>
 #include <vector>
 #include <utility> // untuk swap()
@@ -39,7 +40,7 @@ int main (){
             std::cin >> tinggiKaki;
             v_tinggiKaki.push_back(tinggiKaki);
         }
-        /* for(int i {0}; i < banyakTangga - 1 - i; i++){
+         for(int i {0}; i < banyakTangga - 1 - i; i++){
             for(int j {0}; j < banyakTangga - 1 - i; j++){
                 if (v_anakTangga.at(j) > v_anakTangga.at(j+1)){
                     std::swap(v_anakTangga.at(j), v_anakTangga.at(j+1));
@@ -50,7 +51,7 @@ int main (){
             {
                 break;
             }
-        } */ // ada tag binary search tapi gk ada gunanya disini sejauh yang dilihat dan ada bubble sort disini itu untuk binary search
+        } // ada tag binary search tapi gk ada gunanya disini sejauh yang dilihat dan ada bubble sort disini itu untuk binary search
          long long jumlah = {0};
          int counter = {0};
          for (int i {0}; i < banyakPertanyaan; i++){
@@ -67,4 +68,55 @@ int main (){
          }
          std::cout << '\n';
     }
+}*/
+
+#include <iostream>
+#include <vector>
+
+int main (){
+    std::vector<long long> array, prefixMax;
+    int howMany {0};
+    std::cin >> howMany;
+
+    while (howMany--)
+    {
+        long long tangga {0}, kaki {0}, temp {0};
+        std::cin >> tangga >> kaki;
+        std::cin >> temp;
+        array.push_back(temp);
+        prefixMax.push_back(temp);
+        for (long long i {1}; i < tangga; i++)
+        {
+            std::cin >> temp;
+            prefixMax.push_back(temp);
+            array.push_back(temp);
+            if (prefixMax[i] < prefixMax[i-1]){
+                prefixMax [i] = prefixMax [i-1];
+            }
+            array[i] = array[i-1] + temp;
+        }
+        for (long long i {0}; i < kaki; i++){
+            std::cin >> temp;
+            long long left = {0};
+            long long right = tangga;
+            while (left < right){
+                long long mid = left + (right - left) / 2;
+                if (prefixMax[mid] <= temp){
+                    left = mid + 1;
+                } else
+                {
+                    right = mid;
+                }
+            }  
+            if (left > 0){
+                std::cout << array[left-1] << " ";
+            }else{
+                std::cout << 0 << " ";
+            }
+        }
+        std::cout << '\n';
+        array.clear();
+        prefixMax.clear();
+    }
+    
 }
