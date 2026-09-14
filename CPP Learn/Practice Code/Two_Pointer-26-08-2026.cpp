@@ -1,4 +1,7 @@
-#include <iostream>
+
+// Two Pointer Left
+
+/* #include <iostream>
 #include <vector>
 
 int main () {
@@ -13,4 +16,4 @@ int main () {
         }
     }
     std::cout << "left : " << sortedArray.at(left) << "  right : " << sortedArray.at(right) << " target : " << target << '\n';
-}
+}*/
