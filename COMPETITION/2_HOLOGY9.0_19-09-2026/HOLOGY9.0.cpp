@@ -23,9 +23,9 @@ using namespace std;
 
         dp[0] = 1;
 
-        if (mx >= 1){
+        if (mx >= 1)   
             dp[1] = 1;
-        }
+        
         if (mx >= 2){
             dp[2] = 2;
         }
